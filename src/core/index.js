@@ -1,5 +1,5 @@
 export default function createElement(tag, config, children) {
-  if (typeof tag === "function") {
+  if (typeof tag === 'function') {
     return createComponent(tag, config);
   }
   return createVElement(tag, config, children);
@@ -50,10 +50,10 @@ function mountText(text, parentNode) {
 }
 
 function mount(element, parentNode) {
-  if (typeof element === "string" || typeof element === "number") {
+  if (typeof element === 'string' || typeof element === 'number') {
     return mountText(element, parentNode);
   }
-  if (typeof element.tag === "function") {
+  if (typeof element.tag === 'function') {
     return mountVComponent(element, parentNode);
   }
   return mountVElement(element, parentNode);
@@ -88,7 +88,7 @@ function mountVComponent(vComponent, parentNode) {
 }
 function update(prevElement, nextElement) {
   if (prevElement.tag === nextElement.tag) {
-    if (typeof prevElement.tag === "string") {
+    if (typeof prevElement.tag === 'string') {
       updateVElement(prevElement, nextElement);
     }
   } else {
@@ -124,7 +124,7 @@ function updateChildren(prevChildren, nextChildren, parentNode) {
   for (let i = 0; i < nextChildren.length; i++) {
     const nextChild = nextChildren[i]; // span.card__title Osh
     const prevChild = prevChildren[i]; // span.card__title Bishkek
-    if (typeof nextChild === "string" && typeof prevChild === "string") {
+    if (typeof nextChild === 'string' && typeof prevChild === 'string') {
       updateVText(prevChild, nextChild, parentNode);
     } else {
       update(prevChild, nextChild);
@@ -148,6 +148,7 @@ class Component {
     this._currentElement = null;
     this._parentNode = null;
   }
+
   updateComponent() {
     const prevElement = this._currentElement;
     if (this._pendingState !== this.state) {
@@ -158,10 +159,12 @@ class Component {
     this._currentElement = nextRenderedElement;
     update(prevElement, nextRenderedElement);
   }
+
   setState(partialNewState) {
     this._pendingState = { ...this.state, ...partialNewState };
     this.updateComponent();
   }
+
   render() {}
 }
 
@@ -169,17 +172,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "Bishkek"
+      title: 'Bishkek'
     };
     setTimeout(() => {
-      this.setState({ title: "Osh" });
+      this.setState({ title: 'Osh' });
     }, 1000);
   }
+
   render() {
-    return createElement("div", { className: "card" }, [
-      createElement("span", { className: "card__title" }, [this.state.title]),
-      createElement("span", { className: "card__caption" }, [
-        " State of Kyrgyzstan"
+    return createElement('div', { className: 'card' }, [
+      createElement('span', { className: 'card__title' }, [this.state.title]),
+      createElement('span', { className: 'card__caption' }, [
+        ' State of Kyrgyzstan'
       ])
     ]);
   }
@@ -229,12 +233,12 @@ class App extends Component {
 */
 
 mount(
-  createElement(App, { message: "Hello from props!" }),
-  document.getElementById("root")
+  createElement(App, { message: 'Hello from props!' }),
+  document.getElementById('root')
 );
 {
   /*
-    
+
 class App extends Component {
     render() {
         return (
@@ -249,7 +253,7 @@ class App extends Component {
 mount(
     createElement(App),
     document.getElementById('root')
-) 
+)
 2.
 mount(
     {tag: function App() {}},

@@ -6,13 +6,22 @@
   "scripts": {
     "build": "npx webpack",
     "watch": "npx webpack --watch",
-    "dev": "webpack-dev-server --open"
+    "dev": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-eslint": "^10.0.3",
     "css-loader": "^3.4.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-standard": "^4.0.1",
     "style-loader": "^1.0.2",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
